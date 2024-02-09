@@ -22,7 +22,7 @@ function TodoSection({ status, todos }: TodoSectionProps) {
 
   const handleUpdateTodo = async (todoId: string) => {
     try {
-      const res = await axios.put(routesUrl.todo.updateTodo + "" + "/" + todoId, { headers: { 'jwt-token': token } });
+      const res = await axios.put(routesUrl.todo.updateTodo(todoId), {}, { headers: { 'jwt-token': token } });
       if (res.status === 200)
         dispatch(updateTodo(todoId));
     } catch (error) {
@@ -32,7 +32,7 @@ function TodoSection({ status, todos }: TodoSectionProps) {
 
   const handleDeleteTodo = async (todoId: string) => {
     try {
-      const res = await axios.delete(routesUrl.todo.deleteTodo + "" + "/" + todoId, { headers: { 'jwt-token': token } });
+      const res = await axios.delete(routesUrl.todo.deleteTodo(todoId), { headers: { 'jwt-token': token } });
       if (res.status === 200)
         dispatch(removeTodo(todoId));
     } catch (error) {
@@ -42,13 +42,12 @@ function TodoSection({ status, todos }: TodoSectionProps) {
 
   return (
     <div>
-      <h4>{status.toUpperCase()}</h4>
       <ul>
         {todos.map(todo => (
           <li key={todo._id}>
             {todo.description}
-            {/* <button onClick={() => handleUpdateTodo(todo._id)}>Update</button>
-            <button onClick={() => handleDeleteTodo(todo._id)}>Delete</button> */}
+            <button onClick={() => handleDeleteTodo(todo._id)}>❌</button>
+            {status != 'completed' && (<button onClick={() => handleUpdateTodo(todo._id)}>➡️</button>)}
           </li>
         ))}
       </ul>

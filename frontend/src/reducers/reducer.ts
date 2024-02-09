@@ -8,11 +8,10 @@ function reducer(state, action) {
         case ADD_TODO:
             return { todos: [...state.todos, action.payload] };
         case REMOVE_TODO:
-            return { todos: state.todos.filter(todo => todo.id !== action.payload) };
+            return { todos: state.todos.filter(todo => todo._id !== action.payload) };
         case UPDATE_TODO:
-            return {
-                todos: state.todos.map(todo => {
-                    if (todo.id === action.payload.id) {
+            return { todos: state.todos.map(todo => {
+                    if (todo._id === action.payload) {
                         if (todo.status === 'todo') todo.status = 'inprogress';
                         else if (todo.status === 'inprogress') todo.status = 'completed';
                     }

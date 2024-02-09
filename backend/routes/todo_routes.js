@@ -1,6 +1,6 @@
 const express = require('express');
 const { createTodo, updateTodo, deleteTodo } = require('../controllers/todo_controller');
-const { verifyToken } = require('../configs/jwt'); // Importing verifyToken middleware
+const { verifyToken } = require('../configs/jwt');
 
 const router = express.Router();
 

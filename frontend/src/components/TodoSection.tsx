@@ -20,16 +20,6 @@ function TodoSection({ status, todos }: TodoSectionProps) {
   const token = localStorage.getItem('token');
   const dispatch = useDispatch();
 
-  const handleUpdateTodo = async (todoId: string) => {
-    try {
-      const res = await axios.put(routesUrl.todo.updateTodo(todoId), {}, { headers: { 'jwt-token': token } });
-      if (res.status === 200)
-        dispatch(updateTodo(todoId));
-    } catch (error) {
-      console.error('Error updating todo:', error);
-    }
-  };
-
   const handleDeleteTodo = async (todoId: string) => {
     try {
       const res = await axios.delete(routesUrl.todo.deleteTodo(todoId), { headers: { 'jwt-token': token } });
@@ -40,14 +30,18 @@ function TodoSection({ status, todos }: TodoSectionProps) {
     }
   };
 
+  const handleDragStart = (e: React.DragEvent<HTMLLIElement>, todoId: string, todoStatus: string) => {
+    e.dataTransfer.setData('todoId', todoId);
+    e.dataTransfer.setData('todoStatus',todoStatus);
+  };
+
   return (
     <div>
       <ul>
         {todos.map(todo => (
-          <li key={todo._id}>
-            {todo.description}
-            <button onClick={() => handleDeleteTodo(todo._id)}>❌</button>
-            {status != 'completed' && (<button onClick={() => handleUpdateTodo(todo._id)}>➡️</button>)}
+          <li key={todo._id} draggable onDragStart={(e) => handleDragStart(e, todo._id, todo.status)}>
+            {todo.description}<br></br>
+            <button id="deletebtn" onClick={() => handleDeleteTodo(todo._id)}>❌</button>
           </li>
         ))}
       </ul>

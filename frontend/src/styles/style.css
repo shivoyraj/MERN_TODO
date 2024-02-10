@@ -1,0 +1,61 @@
+body {
+    background-color: azure;
+}
+
+h3{
+    text-align: center;
+}
+
+ul {
+    padding: 10px 45px;
+    background-color: blueviolet;
+    list-style-type: none;
+  }
+  
+  li {
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Brush Script MT', cursive;
+    padding: 6px 31px;
+    margin: 9px -30px;
+    height: auto;
+    min-width: 100px;
+    width: auto;
+    background-color: bisque;
+    border: 1px solid navy;
+    word-wrap: break-word;
+  }
+  
+
+#updatebtn,#deletebtn{
+    font-size:xx-small;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.one-third {
+    width: 30%;
+}
+
+.two-thirds {
+    background-color: lightblue;
+    width: 70%;
+}
+
+.logout-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #cc0000;
+}

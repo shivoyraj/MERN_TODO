@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoSection from './TodoSection';
+import '../styles/style.css'
 
 interface Todo {
   _id: string;
@@ -15,7 +16,7 @@ function TodoItems({ todos }: TodoItemsProps) {
   return (
     <div>
       <h3>Todo Items</h3>
-      <TodoSection status="todo" todos={todos} />
+      <div id="todoSection"><TodoSection status="todo" todos={todos} /></div>
     </div>
   );
 }

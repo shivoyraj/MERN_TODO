@@ -12,6 +12,8 @@ function AddTodoForm() {
   let token = localStorage.getItem('token');
   const navigate = useNavigate();
 
+  useEffect(()=>{},[description]);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(description);
@@ -26,9 +28,9 @@ function AddTodoForm() {
         localStorage.setItem('token','')
         navigate('/login')
       }
-
       console.error('Error fetching todos:', error);
     }
+    setDescription('')
   };
 
   return (

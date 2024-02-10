@@ -104,14 +104,14 @@ span {
     background-color: #0056b3;
 }
 
-#logoutbtn{
+#logoutbtn {
     position: absolute;
     left: 60%;
     top: 96%;
     color: lightgray;
 }
 
-#logoutbtn:hover{
+#logoutbtn:hover {
     color: lightcoral;
 }
 

@@ -76,7 +76,7 @@ function HomePage() {
       <div className="flex-container">
         <div className="one-third">
           <AddTodoForm />
-          <button onClick={handleLogout}>Logout</button>
+          <a id="logoutbtn" onClick={handleLogout}>Click here to Logout</a>
         </div>
         <div className="two-thirds">
           <div className="flex-container">

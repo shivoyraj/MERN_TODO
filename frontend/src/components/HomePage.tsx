@@ -72,7 +72,7 @@ function HomePage() {
 
   return (
     <div>
-      <h2>Home Page</h2>
+      <h2 id="todoDashboard">Todo Dashboard</h2>
       <div className="flex-container">
         <div className="one-third">
           <AddTodoForm />

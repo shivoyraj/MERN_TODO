@@ -10,7 +10,8 @@ ul {
     padding: 10px 45px;
     list-style-type: none;
     border-radius: 10px;
-    max-height: 70vh;
+    height: 57vh;
+    max-height: 57vh;
     overflow-y: scroll;
 }
 
@@ -60,22 +61,28 @@ span {
 .two-thirds {
     background-color: rgb(57, 125, 108);
     width: 70%;
-    height: 88vh;
+    height: 79vh;
     border-radius: 10px;
 }
 
+#todoDashboard{
+    margin-left: 55%;
+    font-size: 40px;
+    color:aliceblue;
+}
+
 #todoSection{
-    min-width: 250px;
+    min-width: 300px;
     background-color: rgb(160, 160, 241);
 }
 
 #inprocessSection{
-    min-width: 250px;
+    min-width: 300px;
     background-color: rgb(216, 216, 126);
 }
 
 #completedSection{
-    min-width: 250px;
+    min-width: 300px;
     background-color: rgb(78, 165, 78);
 }
 

@@ -10,10 +10,10 @@ function reducer(state, action) {
         case REMOVE_TODO:
             return { todos: state.todos.filter(todo => todo._id !== action.payload) };
         case UPDATE_TODO:
-            return { todos: state.todos.map(todo => {
-                    if (todo._id === action.payload) {
-                        if (todo.status === 'todo') todo.status = 'inprogress';
-                        else if (todo.status === 'inprogress') todo.status = 'completed';
+            return {
+                todos: state.todos.map(todo => {
+                    if (todo._id === action.payload.todoId) {
+                        todo.status = action.payload.updatedStatus;
                     }
                     return todo;
                 })

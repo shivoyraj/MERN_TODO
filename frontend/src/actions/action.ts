@@ -19,9 +19,9 @@ export const removeTodo = (todoId) => ({
   payload: todoId,
 });
 
-export const updateTodo = (todoId) => ({
+export const updateTodo = (todoId,updatedStatus) => ({
   type: UPDATE_TODO,
-  payload: todoId,
+  payload: {"todoId":todoId,"updatedStatus":updatedStatus},
 });
 
 export const resetState = () => ({

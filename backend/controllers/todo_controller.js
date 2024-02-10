@@ -28,7 +28,7 @@ async function createTodo(req, res) {
 
 async function updateTodo(req, res) {
   try {
-    const { id } = req.params;
+    const { id, status } = req.params;
 
     const todo = await Todo.findById(id);
     if (!todo)
@@ -42,13 +42,7 @@ async function updateTodo(req, res) {
     if (user.userId !== userId)
       return res.status(403).json({ message: 'Forbidden: You do not have permission to update this todo' });
 
-    if (todo.status === 'todo')
-      todo.status = 'inprogress';
-    else if (todo.status === 'inprogress')
-      todo.status = 'completed';
-    else
-      return res.status(400).json({ message: 'Cannot update a completed todo' });
-
+    todo.status = status;
     await todo.save();
     res.json({ message: 'Todo updated successfully', updatedTodo: todo });
   } catch (error) {

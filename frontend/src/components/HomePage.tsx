@@ -52,37 +52,23 @@ function HomePage() {
     navigate('/')
   };
 
-  const handleUpdateTodo = async (todoId: string) => {
+  const handleDrop = async (updatedStatus: string, e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const todoId = e.dataTransfer.getData('todoId');
     try {
-      const res = await axios.put(routesUrl.todo.updateTodo(todoId), {}, { headers: { 'jwt-token': token } });
-      if (res.status === 200)
-        dispatch(updateTodo(todoId));
+      const res = await axios.put(routesUrl.todo.updateTodo(todoId)+updatedStatus, {}, { headers: { 'jwt-token': token } });
+      if (res.status === 200) {
+        dispatch(updateTodo(todoId,updatedStatus));
+      }
     } catch (error) {
       console.error('Error updating todo:', error);
     }
   };
 
-  const handleDrop = async (currentStatus: string, e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const todoId = e.dataTransfer.getData('todoId');
-    const prevStatus = e.dataTransfer.getData('todoStatus');
-
-    if ((prevStatus === 'todo' && currentStatus === 'inprogress') || (prevStatus === 'inprogress' && currentStatus === 'completed')) {
-      try {
-        const res = await axios.put(routesUrl.todo.updateTodo(todoId), {}, { headers: { 'jwt-token': token } });
-        if (res.status === 200) {
-          dispatch(updateTodo(todoId));
-        }
-      } catch (error) {
-        console.error('Error updating todo:', error);
-      }
-    }
-  };
-
-
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
+
 
   return (
     <div>
@@ -94,13 +80,13 @@ function HomePage() {
         </div>
         <div className="two-thirds">
           <div className="flex-container">
-            <div onDrop={(e) => handleDrop('todo', e)} onDragOver={handleDragOver}>
+            <div id="todoSection" onDrop={(e) => handleDrop('todo', e)} onDragOver={handleDragOver}>
               <TodoItems todos={todos.filter((todo: any) => todo.status === 'todo')} />
             </div>
-            <div onDrop={(e) => handleDrop('inprogress', e)} onDragOver={handleDragOver}>
+            <div id="inprocessSection" onDrop={(e) => handleDrop('inprogress', e)} onDragOver={handleDragOver}>
               <InProgressItems todos={todos.filter((todo: any) => todo.status === 'inprogress')} />
             </div>
-            <div onDrop={(e) => handleDrop('completed', e)} onDragOver={handleDragOver}>
+            <div id="completedSection" onDrop={(e) => handleDrop('completed', e)} onDragOver={handleDragOver}>
               <CompletedItems todos={todos.filter((todo: any) => todo.status === 'completed')} />
             </div>
           </div>

@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(verifyToken);
 
 router.post('/create-todo', createTodo);
-router.put('/update-todo/:id', updateTodo);
+router.put('/update-todo/:id/:status', updateTodo);
 router.delete('/delete-todo/:id', deleteTodo);
 
 module.exports = router;

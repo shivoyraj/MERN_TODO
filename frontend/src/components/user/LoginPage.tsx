@@ -35,14 +35,18 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login Page</h2>
-      <form onSubmit={handleLogin}>
-        <input type="text" placeholder="User ID" value={formData.userId} onChange={(e) => setFormData({ ...formData, userId: e.target.value })} />
-        <input type="password" placeholder="Password" value={formData.userPassword} onChange={(e) => setFormData({ ...formData, userPassword: e.target.value })} />
-        <button type="submit">Login</button>
-      </form>
-      <a href='/register'>click here to register</a>
+    <div className="container">
+      <div className="card">
+        <h2 className="cardHeading">Login to Todo Dashboard</h2>
+        <form className="form" onSubmit={handleLogin}>
+          <input type="text" placeholder="User ID" value={formData.userId} onChange={(e) => setFormData({ ...formData, userId: e.target.value })} required />
+          <input type="password" placeholder="Password" value={formData.userPassword} onChange={(e) => setFormData({ ...formData, userPassword: e.target.value })} required />
+          <button type="submit">Login</button>
+        </form>
+        <div className="link">
+          <a href='/register'>click here to register</a>
+        </div>
+      </div>
     </div>
   );
 }

@@ -62,6 +62,11 @@ function HomePage() {
       }
     } catch (error) {
       console.error('Error updating todo:', error);
+      if(error.response.status==403 || error.response.status==401){
+        alert('Session timeout login again')
+        localStorage.setItem('token','')
+        navigate('/login')
+      }
     }
   };
 

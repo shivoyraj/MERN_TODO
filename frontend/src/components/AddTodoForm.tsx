@@ -44,7 +44,7 @@ function AddTodoForm() {
       </p>
       <form className="todo-form" onSubmit={handleSubmit}>
         <input className="todo-input" type="text" value={description} onChange={(e) => setDescription(e.target.value)} required/>
-        <button className="todo-button" type="submit">Add</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

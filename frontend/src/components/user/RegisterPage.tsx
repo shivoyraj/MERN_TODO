@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import routesUrl from '../../constants';
 
 function RegisterPage() {
-  
+
   const token = localStorage.getItem('token');
   const [formData, setFormData] = useState<{ userId: string; userPassword: string }>({ userId: '', userPassword: '' });
   const navigate = useNavigate();
@@ -31,14 +31,18 @@ function RegisterPage() {
   };
 
   return (
-    <div>
-      <h2>Register Page</h2>
-      <form onSubmit={handleRegister}>
-        <input type="text" placeholder="User ID" value={formData.userId} onChange={(e) => setFormData({ ...formData, userId: e.target.value })} />
-        <input type="password" placeholder="Password" value={formData.userPassword} onChange={(e) => setFormData({ ...formData, userPassword: e.target.value })} />
-        <button type="submit">Register</button>
-      </form>
-      <a href='/'>click here to login</a>
+    <div className="container">
+      <div className="card">
+        <h2 className="cardHeading">Register to Todo Dashboard</h2>
+        <form className="form" onSubmit={handleRegister}>
+          <input type="text" placeholder="User ID" value={formData.userId} onChange={(e) => setFormData({ ...formData, userId: e.target.value })} required />
+          <input type="password" placeholder="Password" value={formData.userPassword} onChange={(e) => setFormData({ ...formData, userPassword: e.target.value })} required />
+          <button type="submit">Register</button>
+        </form>
+        <div className="link">
+          <a href='/login'>click here to login</a>
+        </div>
+      </div>
     </div>
   );
 }

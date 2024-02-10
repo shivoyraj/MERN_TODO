@@ -77,10 +77,10 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 97vh;
 }
 
-.cardHeading{
+.cardHeading {
     text-align: center;
 }
 
@@ -218,4 +218,28 @@ ul::-webkit-scrollbar-track {
 
 .logout-button:hover {
     background-color: #cc0000;
+}
+
+
+.fullscreen-message {
+    margin-top: -800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.fullscreen-message h2 {
+    font-size: 24px;
+    color: #bdbdbd;
+    margin-bottom: 20px;
+}
+
+.fullscreen-message p {
+    font-size: 18px;
+    color: #bdbdbd;
 }

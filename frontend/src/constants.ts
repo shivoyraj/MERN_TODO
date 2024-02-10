@@ -1,5 +1,5 @@
-const env: string = 'local';
-const hostName: string = env === 'local' ? 'http://localhost:3000' : '';
+const env: string = '';
+const hostName: string = env === 'local' ? 'http://localhost:3000' : 'https://todolist-server-86ss.onrender.com';
 
 const routesUrl = {
   user: {
